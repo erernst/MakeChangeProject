@@ -13,7 +13,9 @@ public class MakeChange {
 		String[] currency = { "remainder", "hundreds", "twenties", "tens", "fives", "ones", "quarters", "dimes",
 				"nickels", "pennies" };// sets up an array to spit out bill labels later, remainder will never be used
 										// but is a place holder.
-	}
+	}int bills[0][0]=
+
+	checkout()
 
 	static int checkout() {
 		System.out.print("What is the price of the item: ");// prompting for the price of the item
@@ -34,8 +36,24 @@ public class MakeChange {
 							// returned can be calculated
 		} else if (diff == 0) { // verifies whether or not the exact amount was paid
 			System.out.println("Paid in full, no change due."); // notifies the cashier that no change is due
+		} else if (diff < 0) {// the difference should never be negative
+			System.out.println("$" + (double) (diff / 100)
+					+ " still due. Enter [0] to restart or [1] to add more customer payment."); //essentially an error message saying more money is required.
+			option: while (true) { //created an infinite loop that will keep running until a valid entry is used
+				int opt = getInput(); // receiving input for the option, once again used numbers as options assuming its a cash register
+				if (opt == 0) { // if they choose 0 the whole checkout method will run again
+					diff = checkout(); //reruns checkout and returns the diff this is necessary because after it breaks out of this loop diff will still be returned by the initial checkout method
+					break; // breaks out of the infinite loop because a valid choice is entered
+				} else if (opt == 100) { // if they choose 1 (which is converted to 100 by the input method they will enter how much more money the person paid
+					int more = getInput(); // receiving how much more money the customer paid
+					diff = more + diff; // the new diff is calculated by adding how much more they paid to what the diff was (it is negative so you add to get the new total)
+					break; 
+				} else {
+					System.out.println("Invalid entry. Enter [0] to restart or [1] to add more custome payment.");
+				}
+				return diff;
+			}
 		}
-
 	}
 
 	static int getInput() { // this method is used to gather all input throughout this program, assumed to
@@ -50,10 +68,16 @@ public class MakeChange {
 
 	}
 
-	static int calc();// runs the math on the remainder to determine which bills to give back
+	static int calc(int difference, int[][] bills, String[] currency);// runs the math on the remainder to determine which
+																	// bills to give back
 
-	change(int difference) {
-		for 
-	}
+	for(
+
+	int i = 0;i<array.length;i++)
+	{
+			(bills[0][1] % )
+			
+		}
+}
 
 }
