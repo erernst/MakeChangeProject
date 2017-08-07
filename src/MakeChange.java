@@ -105,6 +105,10 @@ public class MakeChange {
 				System.out.print("How much do you want to remove or [0] For end total: $");
 				price = getInput(keyb); // gathers the price of the item to be removed
 				pTotal = pTotal - price; // sums up the total price minus the amount removed
+				if (pTotal<0) {
+					pTotal = pTotal + price;
+					System.out.println("Invalid entry. Price removed cannot exceed the current subtotal.");
+				}
 				String r = (price !=0?"Subtotal":"Total");
 				System.out.println(r + " $" + (double)pTotal / 100.00);
 				} while(price!=0);
